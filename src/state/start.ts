@@ -12,13 +12,7 @@ export class StartState implements State {
   exit(): void {}
 
   enter(): void {
-    setTimeout(
-      () =>
-        game.stack
-          .push(new DialogueState('Hello World!'))
-          .push(new DialogueState('Click To Continue')),
-      1000
-    );
+    setTimeout(() => game.stack.push(new DialogueState('Hello World!')), 1000);
   }
 
   toString(): string {

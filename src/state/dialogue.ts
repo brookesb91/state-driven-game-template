@@ -2,9 +2,6 @@ import { State, Frame } from '@core';
 import { game } from '@game';
 
 export class DialogueState implements State {
-  private timeout: number = 100;
-  private time: number = 0;
-
   constructor(private text: string) {}
 
   render(ctx: CanvasRenderingContext2D): void {
@@ -13,17 +10,13 @@ export class DialogueState implements State {
     ctx.fillText(this.text, ctx.canvas.width / 2, ctx.canvas.height / 2);
   }
 
-  update({ delta }: Frame): void {
-    this.time += delta;
-
-    if (this.time >= this.timeout) {
-      game.stack.pop();
-    }
-  }
+  update(): void {}
 
   exit(): void {}
 
-  enter(): void {}
+  enter(): void {
+    document.addEventListener('click', () => game.stack.pop(), { once: true });
+  }
 
   toString(): string {
     return 'Dialogue';

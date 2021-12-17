@@ -32,9 +32,9 @@ export class Stack {
   }
 
   push(state: State) {
-    this.states.push(state);
-
     console.log(`[State - Enter] ${this.state} -> ${state}`);
+
+    this.states.push(state);
 
     state.enter();
     return this;

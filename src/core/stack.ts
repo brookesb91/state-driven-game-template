@@ -43,7 +43,7 @@ export class Stack {
   pop() {
     const state = this.states.pop();
 
-    console.log(`[State - Exit] ${state}`);
+    console.log(`[State - Exit] ${state} -> ${this.state}`);
 
     state.exit();
     return this;

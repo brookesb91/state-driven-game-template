@@ -1,7 +1,7 @@
 import { game } from '@game';
 import { StartState } from '@state';
 
-const run = () => {
+const main = () => {
   // Push initial state
   game.stack.push(new StartState());
 
@@ -10,7 +10,7 @@ const run = () => {
 };
 
 try {
-  run();
+  main();
 } catch (e) {
   console.error(e);
 }

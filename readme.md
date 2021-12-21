@@ -43,3 +43,7 @@ A game state is an object that has the following lifecycle methods, called by th
 | `update(frame: Frame): void`                  | Called with each invoke of `requestAnimationFrame` by the `game`. `Frame` data is provided which includes a current timestamp as well as a delta time. `update` is only called on the state that is at the top of the stack. |
 | `render(ctx: CanvasRenderingContext2D): void` | Called after each `update` on the same frame. Provides the canvas rendering context as an argument.                                                                                                                          |
 | `exit(): void`                                | Called when this state is popped off the stack.                                                                                                                                                                              |
+
+## Example Projects
+
+- tic-tac-toe - [[GitHub]](https://github.com/brookesb91/state-driven-game-template)

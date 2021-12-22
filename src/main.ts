@@ -1,9 +1,9 @@
 import { game } from '@game';
-import { StartState } from '@state';
+import { DebugState } from '@state';
 
 const main = () => {
   // Push initial state
-  game.stack.push(new StartState());
+  game.stack.push(new DebugState());
 
   // Start the game
   game.start();

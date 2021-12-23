@@ -18,7 +18,8 @@
       "@models": ["src/models"],
       "@models/*": ["src/models/*"],
       "@stack": ["src/stack"],
-      "@game": ["src/game"]
+      "@game": ["src/game"],
+      "@utils": ["src/utils"]
     }
   },
 }

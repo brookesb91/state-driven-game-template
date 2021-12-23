@@ -3,6 +3,7 @@ import { game } from '@game';
 import { DebugState } from '@state';
 
 import { DialogueState } from './dialogue';
+import { MenuState } from './menu';
 
 export class StartState implements State {
   public enter(): void {
@@ -10,8 +11,20 @@ export class StartState implements State {
   }
 
   public keypress(event: KeyboardEvent) {
-    if (event.key === 'd') {
-      game.stack.push(new DebugState());
+    switch (event.key) {
+      case 'd':
+        game.stack.push(new DebugState());
+        break;
+      case 'm':
+        game.stack.push(
+          new MenuState(
+            Array.from(new Array(100), (_, i) => `Item ${i}`),
+            (index) => {
+              game.stack.pop();
+            }
+          )
+        );
+        break;
     }
   }
 

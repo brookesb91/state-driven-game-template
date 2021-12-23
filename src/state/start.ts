@@ -7,7 +7,7 @@ import { MenuState } from './menu';
 
 export class StartState implements State {
   public enter(): void {
-    setTimeout(() => game.stack.push(new DialogueState('Hello World!')), 1000);
+    game.stack.push(new DialogueState('Hello World!'));
   }
 
   public keypress(event: KeyboardEvent) {
@@ -18,9 +18,14 @@ export class StartState implements State {
       case 'm':
         game.stack.push(
           new MenuState(
-            Array.from(new Array(100), (_, i) => `Item ${i}`),
+            // title
+            'Menu',
+            // items
+            Array.from(new Array(10000), (_, i) => `Item ${i}`),
+            // done
             (index) => {
               game.stack.pop();
+              alert(`Chose index ${index}`);
             }
           )
         );

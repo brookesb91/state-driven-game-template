@@ -35,6 +35,8 @@ Directory of model definitions used by the game implementation.
 
 Directory of game states.
 
+#### Lifecycle Methods
+
 A game state is an object that has the following lifecycle methods, called by the `stack`.
 
 | Method                                        | Description                                                                                                                                                                                                                  |
@@ -44,6 +46,23 @@ A game state is an object that has the following lifecycle methods, called by th
 | `render(ctx: CanvasRenderingContext2D): void` | Called after each `update` on the same frame. Provides the canvas rendering context as an argument.                                                                                                                          |
 | `exit(): void`                                | Called when this state is popped off the stack.                                                                                                                                                                              |
 
+#### Input Handling
+
+If your state is interested in mouse and keyboard events, implement the following methods.
+
+| Method                                 | Description        |
+| -------------------------------------- | ------------------ |
+| `keyup(event: KeyboardEvent): void`    | Key up event.      |
+| `keydown(event: KeyboardEvent): void`  | Key down event.    |
+| `keypress(event: KeyboardEvent): void` | Key press event.   |
+| `mouseup(event: MouseEvent): void`     | Mouse up event.    |
+| `mousedown(event: MouseEvent): void`   | Mouse down event.  |
+| `mouseenter(event: MouseEvent): void`  | Mouse enter event. |
+| `mouseleave(event: MouseEvent): void`  | Mouse leave event. |
+| `mouseout(event: MouseEvent): void`    | Mouse out event.   |
+| `mouseover(event: MouseEvent): void`   | Mouse over event.  |
+| `mousemove(event: MouseEvent): void`   | Mouse move event.  |
+
 ## Example Projects
 
-- tic-tac-toe - [[GitHub]](https://github.com/brookesb91/state-driven-game-template)
+- tic-tac-toe - [[GitHub]](https://github.com/brookesb91/tic-tac-toe)

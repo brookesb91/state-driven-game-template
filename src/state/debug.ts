@@ -1,11 +1,10 @@
 import { State } from '@core';
 import { Position } from '@models';
-import { mousePosition } from '@utils';
 
 export class DebugState implements State {
   private _mouseover: boolean = false;
   private _mousedown: boolean = false;
-  private _mousePosition: Position = { x: 0, y: 0 };
+  private _mousePosition: Position = new Position(0, 0);
 
   // tslint:disable: no-console
   public keyup = (e: KeyboardEvent) => console.log('Key Up', e);
@@ -25,7 +24,7 @@ export class DebugState implements State {
   public mouseenter = (e: MouseEvent) => {
     console.log('Mouse Enter', e);
     this._mouseover = true;
-    this._mousePosition = mousePosition(e);
+    this._mousePosition = Position.fromEvent(e);
   };
 
   public mouseleave = (e: MouseEvent) => {
@@ -37,7 +36,7 @@ export class DebugState implements State {
   public mousemove = (e: MouseEvent) => {
     console.log('Mouse Move', e);
     this._mouseover = true;
-    this._mousePosition = mousePosition(e);
+    this._mousePosition = Position.fromEvent(e);
   };
 
   public mouseout = (e: MouseEvent) => {
@@ -49,7 +48,7 @@ export class DebugState implements State {
   public mouseover = (e: MouseEvent) => {
     console.log('Mouse Over', e);
     this._mouseover = true;
-    this._mousePosition = mousePosition(e);
+    this._mousePosition = Position.fromEvent(e);
   };
 
   public render(ctx: CanvasRenderingContext2D) {

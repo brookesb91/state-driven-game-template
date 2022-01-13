@@ -29,6 +29,7 @@ module.exports = {
         'src/manifest.webmanifest',
         'src/service-worker.js',
         'src/service-worker-register.js',
+        { from: 'src/assets', to: 'assets' },
       ],
     }),
   ],

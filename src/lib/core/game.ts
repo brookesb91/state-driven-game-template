@@ -1,4 +1,4 @@
-import { Stack } from '@core';
+import { Stack } from './stack';
 
 export interface GameConfig {
   /**

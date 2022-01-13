@@ -88,7 +88,7 @@ Directory of game states.
 
 <h2 id="game-states">🧩 Game States</h2>
 
-Game states are located in `src/state` and provide frame by frame functionality for your game.
+Game states are located in `src/lib/state` and provide frame by frame functionality for your game.
 
 They may implement a number of handler methods as described below.
 

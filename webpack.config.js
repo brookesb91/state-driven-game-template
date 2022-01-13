@@ -23,7 +23,13 @@ module.exports = {
   },
   plugins: [
     new CopyPlugin({
-      patterns: ['src/index.html'],
+      patterns: [
+        'src/index.html',
+        'src/favicon.ico',
+        'src/manifest.webmanifest',
+        'src/service-worker.js',
+        'src/service-worker-register.js',
+      ],
     }),
   ],
   watchOptions: {

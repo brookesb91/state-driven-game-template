@@ -11,15 +11,15 @@
     "allowJs": true,
     "moduleResolution": "node",
     "paths": {
-      "@core": ["src/core"],
-      "@core/*": ["src/core/*"],
-      "@state": ["src/state"],
-      "@state/*": ["src/state/*"],
-      "@models": ["src/models"],
-      "@models/*": ["src/models/*"],
-      "@utils": ["src/utils"],
+      "@core": ["src/lib/core"],
+      "@core/*": ["src/lib/core/*"],
+      "@state": ["src/lib/state"],
+      "@state/*": ["src/lib/state/*"],
+      "@models": ["src/lib/models"],
+      "@models/*": ["src/lib/models/*"],
+      "@utils": ["src/lib/utils"],
       "@stack": ["src/stack"],
-      "@game": ["src/game"]
+      "@game": ["src/lib/game"]
     }
   },
 }

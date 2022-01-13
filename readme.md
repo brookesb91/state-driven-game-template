@@ -4,7 +4,7 @@ This is a template for `State-Stack` driven game development on the web.
 
 A game is comprised of stacked states, responsible for their own behaviours, rendering and lifecycle. All the states exist in a single stack which is processed on every animation frame.
 
-Game state is managed by manipulating the `stack`.
+Game state is managed by manipulating the `stack`; A first in, last out data structure.
 
 Below is a short example flow.
 
@@ -37,7 +37,7 @@ Directory of game states.
 
 #### Lifecycle Methods
 
-A game state is an object that has the following lifecycle methods, called by the `stack`.
+A game state is an object that can implement the following optional lifecycle methods, called by the `stack`.
 
 | Method                                        | Description                                                                                                                                                                                                                  |
 | --------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

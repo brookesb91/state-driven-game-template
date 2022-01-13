@@ -1,12 +1,12 @@
 import { State } from '@core';
 import { Position } from '@models';
 
+// tslint:disable: no-console
 export class DebugState implements State {
   private _mouseover: boolean = false;
   private _mousedown: boolean = false;
   private _mousePosition: Position = new Position(0, 0);
 
-  // tslint:disable: no-console
   public keyup = (e: KeyboardEvent) => console.log('Key Up', e);
   public keydown = (e: KeyboardEvent) => console.log('Key Down', e);
   public keypress = (e: KeyboardEvent) => console.log('Key Press', e);
@@ -55,7 +55,7 @@ export class DebugState implements State {
     ctx.font = '16px monospace';
 
     if (this._mouseover) {
-      ctx.fillStyle = this._mousedown ? 'red' : '#10c15c';
+      ctx.fillStyle = this._mousedown ? 'red' : 'green';
       ctx.fillRect(
         this._mousePosition.x - 10,
         this._mousePosition.y - 10,
@@ -64,7 +64,7 @@ export class DebugState implements State {
       );
     }
 
-    ctx.fillStyle = '#ffffff';
+    ctx.fillStyle = 'white';
 
     ctx.fillText('Debug', 16, ctx.canvas.height - 16);
     ctx.fillText(`Mouse Over: ${this._mouseover}`, 16, ctx.canvas.height - 32);

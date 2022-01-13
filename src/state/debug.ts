@@ -64,7 +64,7 @@ export class DebugState implements State {
       );
     }
 
-    ctx.fillStyle = 'white';
+    ctx.fillStyle = 'black';
 
     ctx.fillText('Debug', 16, ctx.canvas.height - 16);
     ctx.fillText(`Mouse Over: ${this._mouseover}`, 16, ctx.canvas.height - 32);

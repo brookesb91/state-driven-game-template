@@ -1,5 +1,6 @@
 const path = require('path');
 const PathsPlugin = require('tsconfig-paths-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: './src/main.ts',
@@ -19,5 +20,13 @@ module.exports = {
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
+  },
+  plugins: [
+    new CopyPlugin({
+      patterns: ['src/index.html'],
+    }),
+  ],
+  watchOptions: {
+    ignored: ['dist/', '/node_modules/'],
   },
 };

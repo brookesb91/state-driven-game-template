@@ -1,6 +1,6 @@
 import { State } from '@core';
-import { game } from '@game';
 import { oscillate } from '@utils';
+import { game } from '@game';
 
 export class MenuState implements State {
   private index: number = 0;

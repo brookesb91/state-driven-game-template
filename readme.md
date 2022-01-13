@@ -1,6 +1,57 @@
-# State Driven Game Starter
+<h1 align="center">
+  🕹️ State Driven Game Development Starter
+</h1>
 
-This is a template for `State-Stack` driven game development on the web.
+<p align="center">
+  A template repository to kick start modern game development on the web built using HTML5 Canvas, TypeScript & Webpack.
+</p>
+
+---
+
+- [Quick Start](#quick-start)
+- [Overview](#overview)
+- [Libraries](#libraries)
+- [Game States](#game-states)
+- [Example Projects](#examples)
+
+---
+
+<h2 id="quick-start">🚀 Quick Start</h2>
+
+### 🛑 Prerequisites
+
+- `node` >= 14
+- `npm` >= 6
+
+### 🖥️ Local Development
+
+Install dependencies.
+
+```bash
+npm i
+```
+
+Start the development server.
+
+```bash
+npm run start
+```
+
+See your game by opening your browser at `localhost:5000`.
+
+Changes made to the source files will trigger a recompilation. Refresh the browser to see the changes.
+
+### 🛠️ Building
+
+Building the project.
+
+```bash
+npm run build
+```
+
+The output will be located at `/dist`.
+
+<h2 id="overview">📖 Overview</h2>
 
 A game is comprised of stacked states, responsible for their own behaviours, rendering and lifecycle. All the states exist in a single stack which is processed on every animation frame.
 
@@ -17,7 +68,7 @@ Below is a short example flow.
 | The battle ends and the stack is popped.                                                           | `[StartState, OverworldState]`                 | `OverworldState` |
 | The player opens their inventory menu to heal themselves. `InventoryState` is pushed to the stack. | `[StartState, OverworldState, InventoryState]` | `InventoryState` |
 
-## Libraries
+<h2 id="libraries">📚 Libraries</h2>
 
 ### `@game`
 
@@ -35,9 +86,15 @@ Directory of model definitions used by the game implementation.
 
 Directory of game states.
 
-#### Lifecycle Methods
+<h2 id="game-states">🧩 Game States</h2>
 
-A game state is an object that can implement the following optional lifecycle methods, called by the `stack`.
+Game states are located in `src/state` and provide frame by frame functionality for your game.
+
+They may implement a number of handler methods as described below.
+
+### 🔄 Lifecycle Methods
+
+A game state can implement the following optional lifecycle methods, called by the `stack`.
 
 | Method                                        | Description                                                                                                                                                                                                                  |
 | --------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -46,7 +103,7 @@ A game state is an object that can implement the following optional lifecycle me
 | `render(ctx: CanvasRenderingContext2D): void` | Called after each `update` on the same frame. Provides the canvas rendering context as an argument.                                                                                                                          |
 | `exit(): void`                                | Called when this state is popped off the stack.                                                                                                                                                                              |
 
-#### Input Handling
+### 🎮 Input Handling
 
 If your state is interested in mouse and keyboard events, implement the following methods.
 
@@ -63,6 +120,6 @@ If your state is interested in mouse and keyboard events, implement the followin
 | `mouseover(event: MouseEvent): void`   | Mouse over event.  |
 | `mousemove(event: MouseEvent): void`   | Mouse move event.  |
 
-## Example Projects
+<h2 id="examples">💡 Example Projects</h2>
 
 - tic-tac-toe - [[GitHub]](https://github.com/brookesb91/tic-tac-toe)

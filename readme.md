@@ -168,7 +168,83 @@ game.stack.pop();
 
 <h2 id="sprites">👾 Sprites</h2>
 
-- todo
+Sprites are objects that render an image on a `HTMLCanvasContext2D`.
+
+A sprite can be created in the following way.
+
+```ts
+import { Sprite } from '@core';
+
+// Create and load the image to be rendered.
+const image = new Image();
+image.src = 'path/to/image.png';
+
+// Create a sprite using the image and parameters.
+const sprite = new Sprite(image, {
+  // Source width
+  w: 16,
+  // Source height
+  h: 16,
+  // Origin x position
+  ox: 0,
+  // Origin y position
+  oy: 0,
+});
+```
+
+The sprite can be rendered to a canvas context.
+
+```ts
+sprite.render(ctx, {
+  // Rendering x position
+  x: 100,
+  // Rendering y position
+  y: 50,
+});
+```
+
+Optionally, the sprite can be scaled in both directions.
+
+```ts
+sprite.render(ctx, {
+  x: 100,
+  y: 50,
+  // Scale the sprite by 3
+  scaleX: 3,
+  scaleY: 3,
+});
+```
+
+### Sprite Sheets
+
+A `SpriteSheet` is used to define multiple `Sprite` objects from a single image.
+
+A `SpriteSheet` is defined as follows.
+
+```ts
+const sprites = new SpriteSheet('/path/to/image.png');
+```
+
+Define sprites directly on the sprite sheet to build multiple sprites from the same image.
+
+```ts
+sprites
+  .define('idle_1', { w: 16, h: 16, ox: 0, oy: 0 })
+  .define('idle_2', { w: 16, h: 16, ox: 16, oy: 16 });
+```
+
+Sprites can then be retrieved from the sprite sheet.
+
+```ts
+/**
+ * Note that, the `.get` method can return undefined.
+ * Accommodate for this by optionally calling render
+ * when doing so.
+ *
+ * `sprite?.render(ctx, config)`
+ * */
+const sprite = sprites.get('idle_1');
+```
 
 <h2 id="examples">💡 Example Projects</h2>
 

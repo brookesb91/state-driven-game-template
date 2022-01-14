@@ -1,4 +1,4 @@
-import { State } from '@core';
+import { Frame, State } from '@core';
 import { DebugState } from '@state';
 import game from '@game';
 import sprites from '@sprites';
@@ -6,7 +6,16 @@ import sprites from '@sprites';
 import { MenuState } from './menu';
 
 export class StartState implements State {
+  private _time: number = 0;
+
   public keypress(event: KeyboardEvent) {
+    /**
+     * Example key press handling.
+     *
+     * All logic in this method can be safely removed.
+     *
+     * Demonstrates responding to keyboard events.
+     */
     switch (event.key) {
       case 'd':
         game.stack.push(new DebugState());
@@ -21,7 +30,7 @@ export class StartState implements State {
             // done
             (index) => {
               game.stack.pop();
-              alert(`Chose index ${index}`);
+              alert(`Chose item ${index}`);
             }
           )
         );
@@ -30,9 +39,44 @@ export class StartState implements State {
   }
 
   public render(ctx: CanvasRenderingContext2D): void {
+    /**
+     * Renders an example scene
+     *
+     * All logic in this method can be safely removed.
+     *
+     * It demonstrates rendering primitive shapes,
+     * sprites and text to the canvas.
+     */
+
+    // Background - sky
+    ctx.fillStyle = '#61C1F2';
+    ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+
+    //Foreground - ground
+    ctx.fillStyle = '#29A415';
+    ctx.fillRect(
+      0,
+      ctx.canvas.height / 2,
+      ctx.canvas.width,
+      ctx.canvas.height / 2
+    );
+
+    /**
+     * Disabled image smoothing for player sprites
+     * as the original image will be scaled up.
+     */
     ctx.imageSmoothingEnabled = false;
 
-    const sprite = sprites.player.get('idle_right_1');
+    /**
+     * Render the player sprite
+     *
+     * Pick sprite based on elapsed time
+     * to simulate animation.
+     */
+    const sprite = sprites.player.get(
+      `idle_right_${Math.floor((this._time / 360) % 2)}`
+    );
+
     const scale = 5;
     const size = 16;
     const cx = ctx.canvas.width / 2 - (size * scale) / 2;
@@ -45,14 +89,28 @@ export class StartState implements State {
       scaleX: 5,
     });
 
-    ctx.font = '32px monospace';
+    // Render title
+    ctx.fillStyle = '#000000';
+    ctx.font = 'bold 32px monospace';
     ctx.textAlign = 'center';
     ctx.fillText('My Awesome Game', ctx.canvas.width / 2, 64);
 
-    ctx.font = '16px monospace';
-    ctx.textAlign = 'left';
-    ctx.fillText('[M] - Menu', 16, ctx.canvas.height - 32);
-    ctx.fillText('[D] - Debug', 16, ctx.canvas.height - 16);
+    // Render key bindings
+    ctx.font = 'bold 16px monospace';
+    ctx.fillText('[M] - Menu', ctx.canvas.width / 2, ctx.canvas.height - 64);
+    ctx.fillText('[D] - Debug', ctx.canvas.width / 2, ctx.canvas.height - 48);
+  }
+
+  public update(frame: Frame): void {
+    /**
+     * Example update method
+     *
+     * Can be safely removed
+     *
+     * Increases the state's time each frame by
+     * the elapsed time this frame.
+     */
+    this._time += frame.delta;
   }
 
   public toString(): string {

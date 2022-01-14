@@ -21,12 +21,13 @@ export class MenuState implements State {
 
   public render(ctx: CanvasRenderingContext2D) {
     // background
-    ctx.fillStyle = '#fff';
-    ctx.fillRect(0, 32, ctx.canvas.width, ctx.canvas.height - 64);
+    ctx.fillStyle = '#000000ac';
+
+    ctx.fillRect(0, 64, ctx.canvas.width, ctx.canvas.height - 128);
 
     // text styles
     ctx.font = '30px Arial';
-    ctx.fillStyle = '#000';
+    ctx.fillStyle = '#ffffff';
 
     // title
     ctx.fillText(this.title, 32, ctx.canvas.height / 2);
@@ -42,24 +43,24 @@ export class MenuState implements State {
       if (this.hasPrevious || this.hasNext) {
         // sub-text styles
         ctx.font = '26px Arial';
-        ctx.fillStyle = `rgba(0,0,0,${
+        ctx.fillStyle = `rgba(200,200,200,${
           oscillate(100, 1000, Date.now()) / 1000
         })`;
 
         // previous item
         if (this.hasPrevious) {
           // previous indicator
-          ctx.fillText('▲', posX, posY - 60);
+          ctx.fillText('▲', posX, posY - 64);
           // previous text
-          ctx.fillText(this.items[this.index - 1], posX, posY - 30);
+          ctx.fillText(this.items[this.index - 1], posX, posY - 32);
         }
 
         // next item
         if (this.hasNext) {
           // next text
-          ctx.fillText(this.items[this.index + 1], posX, posY + 30);
+          ctx.fillText(this.items[this.index + 1], posX, posY + 32);
           // next indicator
-          ctx.fillText('▼', posX, posY + 60);
+          ctx.fillText('▼', posX, posY + 64);
         }
       }
     }

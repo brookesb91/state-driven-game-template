@@ -25,7 +25,6 @@ module.exports = {
     new CopyPlugin({
       patterns: [
         'src/index.html',
-        'src/favicon.ico',
         'src/manifest.webmanifest',
         'src/service-worker.js',
         { from: 'src/assets/', to: 'assets' },

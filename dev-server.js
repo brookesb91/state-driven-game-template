@@ -23,6 +23,11 @@ app.listen(port, () => {
 
   console.log('👀 Starting compiler in watch mode');
   compiler.watch({}, (err, result) => {
-    console.log('Done! ✔️\n');
+    if (result.hasErrors()) {
+      console.log('Compilation failed! ❌');
+      console.error(err.message);
+    } else {
+      console.log('Done! ✔️\n');
+    }
   });
 });

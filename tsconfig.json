@@ -19,7 +19,8 @@
       "@models/*": ["src/lib/models/*"],
       "@utils": ["src/lib/utils"],
       "@stack": ["src/stack"],
-      "@game": ["src/lib/game"]
+      "@game": ["src/lib/game"],
+      "@sprites": ["src/lib/sprites"]
     }
   },
 }

@@ -1,5 +1,5 @@
 import { State } from '@core';
-import { game } from '@game';
+import game from '@game';
 
 export class DialogueState implements State {
   constructor(private text: string) {}

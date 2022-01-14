@@ -1,7 +1,7 @@
 import { Game } from '@core';
 
 // Create a game and export it
-export const game = new Game({
+export default new Game({
   /**
    * Root canvas element selector
    */

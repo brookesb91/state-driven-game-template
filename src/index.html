@@ -6,9 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Changed this title to the name of your game. -->
-    <title>My Game</title>
+    <title>My Awesome Game</title>
 
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <!-- Change this to match your game theme. -->
+    <meta name="theme-color" content="#ffffff" />
+
+    <!-- Placeholder icons, replace with your own. -->
+    <link rel="shortcut icon" type="image/x-icon" href="/icons/favicon.ico" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/icons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/icons/favicon-16x16.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/icons/apple-touch-icon.png"
+    />
+
+    <link rel="manifest" href="manifest.webmanifest" />
   </head>
 
   <body>
@@ -40,6 +63,10 @@
       Register the service worker for this PWA.
       Will only work when being served over https.
     -->
-    <!-- <script src="./service-worker-register.js"></script> -->
+    <!-- <script type="text/javascript">
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('./service-worker.js');
+      }
+    </script> -->
   </body>
 </html>

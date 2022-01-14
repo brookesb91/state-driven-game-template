@@ -9,7 +9,6 @@ const assets = [
 ];
 
 function onInstall(event) {
-  log('Installing');
   event.waitUntil(caches.open(key).then((cache) => cache.addAll(assets)));
 }
 

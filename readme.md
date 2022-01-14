@@ -10,8 +10,9 @@
 
 - [Quick Start](#quick-start)
 - [Overview](#overview)
-- [Libraries](#libraries)
+- [Project Structure](#project-structure)
 - [Game States](#game-states)
+- [Sprites](#sprites)
 - [Example Projects](#examples)
 
 ---
@@ -51,6 +52,8 @@ npm run build
 
 The output will be located at `/dist`.
 
+---
+
 <h2 id="overview">📖 Overview</h2>
 
 A game is comprised of stacked states, responsible for their own behaviours, rendering and lifecycle. All the states exist in a single stack which is processed on every animation frame.
@@ -68,27 +71,51 @@ Below is a short example flow.
 | The battle ends and the stack is popped.                                                           | `[StartState, OverworldState]`                 | `OverworldState` |
 | The player opens their inventory menu to heal themselves. `InventoryState` is pushed to the stack. | `[StartState, OverworldState, InventoryState]` | `InventoryState` |
 
-<h2 id="libraries">📚 Libraries</h2>
+---
 
-### `@game`
+<h2 id="project-structure">📚 Project Structure</h2>
 
-Exposes the global `game` object exported from `game.ts`.
-
-### `@core`
-
-Directory of core features.
-
-### `@models`
-
-Directory of model definitions used by the game implementation.
-
-### `@state`
-
-Directory of game states.
+```text
+dist                          [Build output]
+src                           [Source root]
+  /assets                     [Web assets]
+  /icons                      [Web icons]
+  /lib                        [Game libraries]
+    /core                     [Core libraries - @core]
+    /models                   [Game models - @models]
+    /sprites                  [Sprite definitions - @sprites]
+    /state                    [State definitions - @state]
+    /utils                    [Utility libraries - @utils]
+    /game.ts                  [Game entry point - @game]
+  /index.html                 [Web index page]
+  /main.ts                    [App entry point]
+  /manifest.webmanifest       [PWA manifest]
+  /service-worker.js          [PWA service worker]
+dev-server.js                 [Development express server]
+tsconfig.json                 [TypeScript configuration]
+tslint.json                   [tslint configuration]
+webpack.config.js             [Webpack configuration]
+```
 
 <h2 id="game-states">🧩 Game States</h2>
 
-Game states are located in `src/lib/state` and provide frame by frame functionality for your game.
+Game states provide frame by frame functionality for your game.
+
+### Creating States
+
+Create a new state class, implementing the `State` interface and defining at least one handler method.
+
+```ts
+export class MyGameState implements State {
+  enter(): void {
+    console.log('Pushed to the stack!');
+  }
+
+  exit(): void {
+    console.log('Popped from the stack!');
+  }
+}
+```
 
 They may implement a number of handler methods as described below.
 
@@ -119,6 +146,29 @@ If your state is interested in mouse and keyboard events, implement the followin
 | `mouseout(event: MouseEvent): void`    | Mouse out event.   |
 | `mouseover(event: MouseEvent): void`   | Mouse over event.  |
 | `mousemove(event: MouseEvent): void`   | Mouse move event.  |
+
+### Using States
+
+To advance your game to the next state, simply `push` an instance of your state to the game stack.
+
+```ts
+// Import the `game` object.
+import game from '@game';
+
+// Elsewhere in your code
+game.stack.push(new MyGameState());
+```
+
+States can also be popped from the stack as long as it has states to `pop`.
+
+```ts
+// Remove top-most state
+game.stack.pop();
+```
+
+<h2 id="sprites">👾 Sprites</h2>
+
+- todo
 
 <h2 id="examples">💡 Example Projects</h2>
 

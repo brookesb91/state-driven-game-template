@@ -42,7 +42,7 @@ npm run start
 
 See your game by opening your browser at `localhost:5000`.
 
-![Example screen](images/screenshot.png)
+![Example screen](images/screenshot.PNG)
 
 Using the example code, it is possible to debug the game inputs by pressing `d` to understand how and when they are used. Pressing `m` shows an example menu to further demonstrate more difficult rendering tasks.
 

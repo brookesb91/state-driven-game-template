@@ -5,7 +5,16 @@
 </h1>
 
 <p align="center">
-  A template repository to kick start modern game development on the web built using HTML5 Canvas, TypeScript & Webpack.
+  A template repository to kick start modern game development on the web.
+</p>
+
+<p align="center">
+  <img alt="HTML5" src="https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white" />
+  <img alt="TypeScript" src="https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white" />
+  <img alt="NodeJS" src="https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white" />
+  <img alt="Express.js" src="https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB" />
+  <img alt="Webpack" src="https://img.shields.io/badge/webpack-%238DD6F9.svg?style=for-the-badge&logo=webpack&logoColor=black" />
+  <img alt="Progressive Web App" src="https://img.shields.io/badge/pwa-%235A0FC8.svg?style=for-the-badge&logo=pwa&logoColor=white" />
 </p>
 
 ---

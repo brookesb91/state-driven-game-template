@@ -1,3 +1,5 @@
+<p align="center"><img src="images/icon.png" width="96"></p>
+
 <h1 align="center">
   🕹️ State Driven Game Development Starter
 </h1>
@@ -39,6 +41,10 @@ npm run start
 ```
 
 See your game by opening your browser at `localhost:5000`.
+
+![Example screen](images/screenshot.png)
+
+Using the example code, it is possible to debug the game inputs by pressing `d` to understand how and when they are used. Pressing `m` shows an example menu to further demonstrate more difficult rendering tasks.
 
 Changes made to the source files will trigger a recompilation. Refresh the browser to see the changes.
 

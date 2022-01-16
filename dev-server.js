@@ -7,6 +7,16 @@ const config = require('./webpack.config.js');
 
 const port = process.env.PORT || 5000;
 
+const env = {
+  /**
+   * Webpack environment variables
+   */
+  production: false,
+};
+
+const log = (message) =>
+  console.log(`[${new Date().toLocaleTimeString()}] ${message}`);
+
 app.use(express.static('./dist'));
 
 app.listen(port, () => {
@@ -15,19 +25,20 @@ app.listen(port, () => {
   console.log(`🌐 Open your browser at http://localhost:${port}`);
   console.log('====================================================');
 
-  const compiler = webpack(config);
+  const compiler = webpack(config(env));
 
-  compiler.hooks.compile.tap('LogCompile', () => {
-    console.log('Compiling... 🛠️');
+  compiler.hooks.compile.tap('OnCompile', () => {
+    log('Compiling... 🛠️');
   });
 
-  console.log('👀 Starting compiler in watch mode');
+  log('👀 Starting compiler in watch mode');
+
   compiler.watch({}, (err, result) => {
     if (result.hasErrors()) {
-      console.log('Compilation failed! ❌');
+      log('Compilation failed! ❌');
       console.error(err.message);
     } else {
-      console.log('Done! ✔️\n');
+      log('Done! ✔️\n');
     }
   });
 });

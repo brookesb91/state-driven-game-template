@@ -1,20 +1,16 @@
 import { Frame, State } from '@core';
-import { DebugState } from '@state';
 import game from '@game';
-import sprites from '@sprites';
+import { Player } from '@models';
 
 import { MenuState } from './menu';
+import { DebugState } from './debug';
 
 export class StartState implements State {
-  private _time: number = 0;
+  readonly player: Player = new Player();
 
   public keypress(event: KeyboardEvent) {
     /**
-     * Example key press handling.
-     *
-     * All logic in this method can be safely removed.
-     *
-     * Demonstrates responding to keyboard events.
+     * Example code; can be safely removed.
      */
     switch (event.key) {
       case 'd':
@@ -27,7 +23,7 @@ export class StartState implements State {
             'Menu',
             // items
             Array.from(new Array(10000), (_, i) => `Item ${i}`),
-            // done
+            // done callback
             (index) => {
               game.stack.pop();
               alert(`Chose item ${index}`);
@@ -40,19 +36,13 @@ export class StartState implements State {
 
   public render(ctx: CanvasRenderingContext2D): void {
     /**
-     * Renders an example scene
-     *
-     * All logic in this method can be safely removed.
-     *
-     * It demonstrates rendering primitive shapes,
-     * sprites and text to the canvas.
+     * Example code; can be safely removed.
      */
-
-    // Background - sky
+    // Render background
     ctx.fillStyle = '#61C1F2';
     ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
-    //Foreground - ground
+    // Render foreground
     ctx.fillStyle = '#29A415';
     ctx.fillRect(
       0,
@@ -61,33 +51,8 @@ export class StartState implements State {
       ctx.canvas.height / 2
     );
 
-    /**
-     * Disabled image smoothing for player sprites
-     * as the original image will be scaled up.
-     */
-    ctx.imageSmoothingEnabled = false;
-
-    /**
-     * Render the player sprite
-     *
-     * Pick sprite based on elapsed time
-     * to simulate animation.
-     */
-    const sprite = sprites.player.get(
-      `idle_right_${Math.floor((this._time / 360) % 2)}`
-    );
-
-    const scale = 5;
-    const size = 16;
-    const cx = ctx.canvas.width / 2 - (size * scale) / 2;
-    const cy = ctx.canvas.height / 2 - (size * scale) / 2;
-
-    sprite?.render(ctx, {
-      x: cx,
-      y: cy,
-      scaleY: 5,
-      scaleX: 5,
-    });
+    // Render player
+    this.player.render(ctx);
 
     // Render title
     ctx.fillStyle = '#000000';
@@ -103,14 +68,9 @@ export class StartState implements State {
 
   public update(frame: Frame): void {
     /**
-     * Example update method
-     *
-     * Can be safely removed
-     *
-     * Increases the state's time each frame by
-     * the elapsed time this frame.
+     * Example code; can be safely removed.
      */
-    this._time += frame.delta;
+    this.player.update(frame.delta);
   }
 
   public toString(): string {

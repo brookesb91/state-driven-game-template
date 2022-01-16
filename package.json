@@ -1,11 +1,11 @@
 {
-  "name": "state-stack",
+  "name": "state-driven-game-starter",
   "version": "1.0.0",
-  "description": "",
+  "description": "A state driven game starter template.",
   "main": "dev-server.js",
   "types": "dist/types/src/*.d.ts",
   "scripts": {
-    "build": "webpack",
+    "build": "webpack --env production",
     "start": "node dev-server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

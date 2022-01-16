@@ -20,7 +20,8 @@
       "@utils": ["src/lib/utils"],
       "@stack": ["src/stack"],
       "@game": ["src/lib/game"],
-      "@sprites": ["src/lib/sprites"]
+      "@sprites": ["src/lib/sprites"],
+      "@env": ["src/lib/environment/environment.ts"]
     }
   },
 }

@@ -19,7 +19,7 @@ export class Player {
       })
       .define({
         name: 'idle_left',
-        loop: false,
+        loop: true,
         frames: [
           sprites.player.get('idle_left_0'),
           sprites.player.get('idle_left_1'),

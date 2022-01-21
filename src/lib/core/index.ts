@@ -1,3 +1,4 @@
+export * from './animator';
 export * from './frame';
 export * from './game';
 export * from './sprite-sheet';

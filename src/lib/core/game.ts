@@ -45,8 +45,9 @@ export class Game {
 
     if (fullscreen) {
       this.canvas.classList.add('fullscreen');
-      this.canvas.width = this.canvas.offsetWidth;
-      this.canvas.height = this.canvas.offsetHeight;
+      // this.canvas.width = this.canvas.offsetWidth;
+      // this.canvas.height = this.canvas.offsetHeight;
+      this.initCanvas();
     } else {
       if (!height || !width) {
         throw new Error(
@@ -86,8 +87,6 @@ export class Game {
   }
 
   private initCanvas() {
-    // this.canvas.height = this.canvas.height;
-    // this.canvas.width = this.canvas.width;
     this.canvas.width = this.canvas.offsetWidth;
     this.canvas.height = this.canvas.offsetHeight;
   }

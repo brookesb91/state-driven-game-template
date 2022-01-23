@@ -7,6 +7,10 @@ export default new Game({
    */
   selector: 'canvas#game',
   /**
+   * Overrides height and width settings.
+   */
+  // fullscreen: true,
+  /**
    * Canvas height (px).
    */
   height: 360,

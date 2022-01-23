@@ -9,11 +9,16 @@ export interface GameConfig {
   /**
    * Height of the rendering canvas in pixels.
    */
-  height: number;
+  height?: number;
   /**
    * Width of the rendering canvas in pixels.
    */
-  width: number;
+  width?: number;
+
+  /**
+   * Full screen canvas
+   */
+  fullscreen?: boolean;
 }
 
 export class Game {
@@ -34,11 +39,24 @@ export class Game {
   private stopped: boolean = false;
   private time: number = 0;
 
-  constructor({ selector, height, width }: GameConfig) {
+  constructor({ selector, height, width, fullscreen }: GameConfig) {
     this.canvas = document.querySelector(selector);
     this.ctx = this.canvas.getContext('2d');
-    this.canvas.height = height;
-    this.canvas.width = width;
+
+    if (fullscreen) {
+      this.canvas.classList.add('fullscreen');
+      // this.canvas.width = this.canvas.offsetWidth;
+      // this.canvas.height = this.canvas.offsetHeight;
+      this.initCanvas();
+    } else {
+      if (!height || !width) {
+        throw new Error(
+          'height and width must be provided if fullscreen is false.'
+        );
+      }
+      this.canvas.height = height;
+      this.canvas.width = width;
+    }
   }
 
   public start() {
@@ -69,8 +87,8 @@ export class Game {
   }
 
   private initCanvas() {
-    this.canvas.height = this.canvas.height;
-    this.canvas.width = this.canvas.width;
+    this.canvas.width = this.canvas.offsetWidth;
+    this.canvas.height = this.canvas.offsetHeight;
   }
 
   private initListeners() {

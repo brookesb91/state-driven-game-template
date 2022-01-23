@@ -1,15 +1,36 @@
+import { Animator } from '@core';
 import sprites from '@sprites';
 
 export class Player {
   sprites = sprites.player;
 
-  private time: number;
+  readonly animator: Animator;
+
+  constructor() {
+    this.animator = new Animator()
+      .define({
+        name: 'idle_right',
+        loop: true,
+        frames: [
+          sprites.player.get('idle_right_0'),
+          sprites.player.get('idle_right_1'),
+        ],
+        duration: 600,
+      })
+      .define({
+        name: 'idle_left',
+        loop: true,
+        frames: [
+          sprites.player.get('idle_left_0'),
+          sprites.player.get('idle_left_1'),
+        ],
+        duration: 600,
+      });
+
+    this.animator.play('idle_right');
+  }
 
   render(ctx: CanvasRenderingContext2D) {
-    const sprite = this.sprites.get(
-      `idle_right_${Math.floor((this.time / 360) % 2)}`
-    );
-
     ctx.imageSmoothingEnabled = false;
 
     const scale = 5;
@@ -17,7 +38,7 @@ export class Player {
     const cx = ctx.canvas.width / 2 - (size * scale) / 2;
     const cy = ctx.canvas.height / 2 - (size * scale) / 2;
 
-    sprite?.render(ctx, {
+    this.animator.render(ctx, {
       x: cx,
       y: cy,
       scaleY: 5,
@@ -26,6 +47,10 @@ export class Player {
   }
 
   update(delta: number) {
-    this.time += delta;
+    this.animator.update(delta);
+  }
+
+  face(facing: 'left' | 'right') {
+    this.animator.play(`idle_${facing}`, true);
   }
 }

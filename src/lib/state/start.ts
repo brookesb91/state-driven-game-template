@@ -1,6 +1,6 @@
 import { Frame, State } from '@core';
 import game from '@game';
-import { Player } from '@models';
+import { Player, Position } from '@models';
 
 import { MenuState } from './menu';
 import { DebugState } from './debug';
@@ -71,6 +71,11 @@ export class StartState implements State {
      * Example code; can be safely removed.
      */
     this.player.update(frame.delta);
+  }
+
+  public mousemove(event: MouseEvent): void {
+    const pos = Position.fromEvent(event);
+    this.player.face(pos.x < game.canvas.width / 2 ? 'left' : 'right');
   }
 
   public toString(): string {
